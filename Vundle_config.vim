@@ -199,7 +199,7 @@ highlight SyntasticErrorSign guifg=white guibg=red
 "HTML语法检查
 let g:syntastic_html_checkers=['htmlhint']
 
-"CSS语法检查 csslint
+"CSS语法检查 sudo npm install -g PrettyCSS
 let g:syntastic_css_checkers=['prettycss']
 
 "php语法检查
