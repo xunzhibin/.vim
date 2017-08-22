@@ -34,6 +34,13 @@ Plugin 'altercation/vim-colors-solarized'
 
 
 "--------------------------------------
+" 状态栏、buffer栏美化
+"--------------------------------------
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+
+"--------------------------------------
 "   自动补全 引号，括号，括号等
 "--------------------------------------
 Plugin 'raimondi/delimitmate'
@@ -189,8 +196,14 @@ let g:syntastic_enable_highlighting = 0
 
 highlight SyntasticErrorSign guifg=white guibg=red
 
-"HTML语法检查 使用npm安装 npm install -g tidy
-let g:syntastic_html_checkers=['tidy']
+"HTML语法检查
+let g:syntastic_html_checkers=['htmlhint']
+
+"CSS语法检查 csslint
+let g:syntastic_css_checkers=['prettycss']
+
+"php语法检查
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 
 
 """""""""""""""""""""""""""""""""""""""""""" Vundle 插件设置 结束 """"""""""""""""""""""""""""""""""""""""""""""""
