@@ -196,11 +196,14 @@ let g:syntastic_enable_highlighting = 0
 
 highlight SyntasticErrorSign guifg=white guibg=red
 
-"HTML语法检查
+"HTML语法检查sudo npm install -g htmlhint
 let g:syntastic_html_checkers=['htmlhint']
 
 "CSS语法检查 sudo npm install -g PrettyCSS
 let g:syntastic_css_checkers=['prettycss']
+
+"javascript语法检查 sudo npm install -g jslint
+let g:syntastic_javascirpt_checkers=['jslint']
 
 "php语法检查
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
