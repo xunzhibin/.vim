@@ -43,7 +43,7 @@ set guioptions-=b
 "	字体
 "==========================
 "设置字体
-set guifont=Source_Code_Pro:h14
+set guifont=Source\ Code\ Pro\ Regular\ 14
 "防止特殊符号无法正常显示
 set ambiwidth=double                
 
