@@ -198,6 +198,7 @@ highlight SyntasticErrorSign guifg=white guibg=red
 
 "HTML语法检查sudo npm install -g htmlhint
 let g:syntastic_html_checkers=['htmlhint']
+"let g:syntastic_html_exec=
 
 "CSS语法检查 sudo npm install -g PrettyCSS
 let g:syntastic_css_checkers=['prettycss']
