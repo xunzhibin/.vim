@@ -10,6 +10,14 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 "屏幕显示的编码方式
 set termencoding=utf-8
 
+if has("win16") || has("win32") || has("win64") || has("win95")
+	"解决菜单乱码
+	source $VIMRUNTIME/delmenu.vim
+	source $VIMRUNTIME/menu.vim
+
+	"解决consle输出乱码
+	language messages zh_CN.utf-8
+endif
 
 
 
@@ -43,7 +51,14 @@ set guioptions-=b
 "	字体
 "==========================
 "设置字体
-set guifont=Source\ Code\ Pro\ Regular\ 14
+if has("win16") || has("win32") || has("win64") || has("win95")
+	" window
+	set guifont=Source_Code_Pro_Regular:h14
+else
+	" linux
+	set guifont=Source\ Code\ Pro\ Regular\ 14
+endif
+
 "防止特殊符号无法正常显示
 set ambiwidth=double                
 
@@ -116,10 +131,12 @@ set wildignore=**.o,*~,.swp,*.bak,*.pyc,*.class
 "==========================
 "从不备份(文件保存时，不产生~备份文件)
 set nobackup
+set noundofile
 "不产生交换文件(文件编辑时，不产生.swp交换文件)
 set noswapfile
 "自动重新读入(当打开文件在外部被修改，自动更新该文件)
 set autoread
+
 
 
 
@@ -223,3 +240,29 @@ set foldenable
 set foldmethod=indent
 "显示折叠的级别
 set foldlevel=99
+
+
+
+" 当新建文件时自动加入头注释
+autocmd BufNewFile *.php exec ":call SetComment()"
+
+" 加入注释
+func SetComment()
+    call setline(1,"<?php")
+    call append(line("."),"/*================================================================")
+    call append(line(".")+1,   "*   Copyright (C) ".strftime("%Y")." Jnexpert Ltd. All rights reserved.")
+    call append(line(".")+2, "*")
+    call append(line(".")+3, "*   Filename : ".expand("%"))
+    call append(line(".")+4, "*   Author   : Alex Xun")
+    call append(line(".")+5, "*   Email    : xunzhibin@hotmail.com")
+    call append(line(".")+6, "*   Create   : ".strftime("%Y-%m-%d %H:%M:%S"))
+    call append(line(".")+7, "*   描    述：")
+    call append(line(".")+8, "*")
+    call append(line(".")+9, "================================================================*/")
+    call append(line(".")+10, "")
+    "call append(line(".")+11, "")
+endfunc
+
+"映射F2快捷键，生成后跳转至第10行，然后使用o进入vim的插入模式
+"map <F2> :call SetComment()<CR>:12<CR>o
+map <F2> :call SetComment()<CR>:12<CR>

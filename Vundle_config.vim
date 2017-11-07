@@ -20,8 +20,15 @@ let g:mapleader = ','
 """""""""""""""""""""""""""""""""""""""""""" Vundle 插件管理 开始 """"""""""""""""""""""""""""""""""""""""""""""""
 
 " 设置运行路径，加载和初始化vundle
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if has("win16") || has("win32") || has("win64") || has("win95")
+	" window
+	set rtp+=$VIM/vimfiles/bundle/Vundle.vim/
+	call vundle#begin('$VIM/vimfiles/bundle/')
+else
+	" linux
+	set rtp+=~/.vim/bundle/Vundle.vim
+	call vundle#begin()
+endif
 
 " 让Vundle管理插件管理 Vundle (必需的)
 Plugin 'VundleVim/Vundle.vim'
