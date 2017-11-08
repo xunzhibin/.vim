@@ -53,7 +53,7 @@ set guioptions-=b
 "设置字体
 if has("win16") || has("win32") || has("win64") || has("win95")
 	" window
-	set guifont=Source_Code_Pro_Regular:h14
+	set guifont=Source_Code_Pro:h14
 else
 	" linux
 	set guifont=Source\ Code\ Pro\ Regular\ 14
