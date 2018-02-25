@@ -25,7 +25,17 @@ endif
 "	窗口
 "==========================
 "自动最大化
-autocmd GUIEnter * simalt ~x
+"autocmd GUIEnter * simalt ~x
+" 将外部命令 wmctrl控制窗口最大化的命令行参数封装成一个 vim函数
+fun! ToggleFullscreen()
+    call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")
+endf
+
+" 全屏开/关 快捷键
+map <silent> <F11> :call ToggleFullscreen()<CR>
+
+" 启动 vim 时 自动全屏
+autocmd VimEnter * call ToggleFullscreen()
 
 "窗口大小 行=lines 列=columns
 "set lines=60 columns=200

@@ -184,7 +184,8 @@ colorscheme solarized
 "图形界面
 if has('gui_running')
     "设置背景颜色为暗色
-    set background=dark
+    "set background=dark
+    set background=light
 "非图形界面
 else
     "设置背景颜色为亮色
@@ -217,6 +218,10 @@ let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
 " 快捷键 i 开/关 缩进可视化
 nmap <silent> <leader>i <Plug>IndentGuidesToggle
+" 自定义关联可视化 颜色
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=red ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 
 "---------------------------------------------------
@@ -239,6 +244,24 @@ vmap <Leader>a' :Tabularize /'<CR>
 "   Mapping: <leader><space>
 map <leader><space> :FixWhitespace<cr>
 
+
+"----------------------------------------------------------------------------
+"   < scrooloose/nerdcommenter(快速注释) 插件配置 >
+"----------------------------------------------------------------------------
+" 在注释符默认添加空格
+let g:NERDSpaceDelims = 1
+" 使用紧凑语法美化多行注释
+let g:NERDCompactSexyComs = 1
+" 将行注释符左对齐而不是下面的代码缩进
+let g:NERDDefaultAlign = 'left'
+" 设置语言默认使用备用定界符
+let g:NERDAltDelims_java = 1
+" 添加自定义格式或覆盖默认值
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/'} }
+" 允许注释和转换空行 (注释区域时有用)
+let g:NERDCommentEmptyLines = 1
+" 启用时修整尾随空格注释
+let g:NERDTrimTrailingWhitespace = 1
 
 
 "---------------------------------------------------
