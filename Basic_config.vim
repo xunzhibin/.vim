@@ -34,7 +34,7 @@ autocmd GUIEnter * simalt ~x
 "启动的时候不显示那个援助索马里儿童的提示
 set shortmess=atI
 "隐藏窗口上侧工具栏
-set guioptions-=T                   
+set guioptions-=T
 "隐藏窗口上侧菜单栏
 set guioptions-=m
 "隐藏窗口右侧的滚动条
@@ -60,7 +60,7 @@ else
 endif
 
 "防止特殊符号无法正常显示
-set ambiwidth=double                
+set ambiwidth=double
 
 
 
@@ -70,14 +70,16 @@ set ambiwidth=double
 "==========================
 "显示行号
 set number
-"不要换行 
+"不要换行
 set nowrap
 "高亮显示当前行
 set cursorline
 "高亮显示当前列
 set cursorcolumn
 "设定光标离窗口上下边界 n行时窗口自动滚动
-set scrolloff=7
+"set scrolloff=7
+" 设定光标 总在中间
+:se so=999
 
 
 
@@ -87,9 +89,9 @@ set scrolloff=7
 "	文本
 "==========================
 "退出vim后，内容显示在终端屏幕
-set t_ti= t_te=	
+set t_ti= t_te=
 "选择文本时，光标所在位置也属于被选中的范围
-set selection=inclusive	
+set selection=inclusive
 set selectmode=mouse,key
 "改变终端的标题
 set title
@@ -107,7 +109,7 @@ set showmatch
 "当匹配括号的时候，眨眼的时间是多少
 set mat=2
 "允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存(没有保存的缓冲区可以自动隐藏)
-set hidden					
+set hidden
 set wildmode=longest:full,full
 set ttyfast
 " Use Unix as the standard file type
@@ -136,6 +138,8 @@ set noundofile
 set noswapfile
 "自动重新读入(当打开文件在外部被修改，自动更新该文件)
 set autoread
+" 处理微未保存或只读文件时,弹出确认
+set confirm
 
 
 
@@ -168,7 +172,7 @@ set shiftround
 "==========================
 "	backspace键
 "==========================
-"配置backspace 使退格键（backspace）使用此顺序; 正常处理indent, eol, start等 
+"配置backspace 使退格键（backspace）使用此顺序; 正常处理indent, eol, start等
 set backspace=eol,start,indent
 "允许backspace和光标键跨越行边界(不建议)
 set whichwrap+=<,>,h,l

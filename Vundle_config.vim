@@ -43,8 +43,26 @@ Plugin 'altercation/vim-colors-solarized'
 "--------------------------------------
 " 状态栏、buffer栏美化
 "--------------------------------------
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+
+
+"--------------------------------------
+"   代码高亮(支持大多数语言)
+"--------------------------------------
+Plugin 'sheerun/vim-polyglot'
+
+
+"--------------------------------------
+"   相同缩进的代码关联起来
+"--------------------------------------
+Plugin 'nathanaelkane/vim-indent-guides'
+
+
+"--------------------------------------
+"   快捷键选中 <> [] {} 中的内容
+"--------------------------------------
+Plugin 'gcmt/wildfire.vim'
 
 
 "--------------------------------------
@@ -118,7 +136,31 @@ Plugin 'othree/html5.vim'
 "--------------------------------------
 " 语法检查
 "--------------------------------------
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
+
+
+"--------------------------------------
+"   提高HTML和CSS的工作流
+"--------------------------------------
+Plugin 'mattn/emmet-vim'
+
+
+"--------------------------------------
+"   提供快速编写xml/html的能力, 如标签自动闭合
+"--------------------------------------
+Plugin 'othree/xml.vim'
+
+
+"--------------------------------------
+"   CSS3 高亮, 包括 stylus,Less,Sass
+"--------------------------------------
+Plugin 'hail2u/vim-css3-syntax'
+
+
+"--------------------------------------
+"   语法高亮(多种知名js库)
+"--------------------------------------
+Plugin 'othree/javascript-libraries-syntax.vim'
 
 
 call vundle#end()
@@ -146,12 +188,35 @@ if has('gui_running')
 "非图形界面
 else
     "设置背景颜色为亮色
-    set background=light
-    "set background=dark
+    "set background=light
+    set background=dark
 endif
 "背景颜色切换(亮色和暗色切换)
 call togglebg#map("<F1>")
 
+
+
+"---------------------------------------------------
+"   < vim-airline(状态栏美化) 插件配置 >
+"---------------------------------------------------
+let g:airline#extensions#tabline#left_sep = ' '
+let g:girline#extensions#tabline#left_alt_sep = '|'
+
+let g:airline_powerline_fonts=1
+let g:airline_theme='jellybeans'
+
+
+"---------------------------------------------------
+"   < vim-indent-guides(缩进可视化) 插件配置 >
+"---------------------------------------------------
+" 随 vim 自启动
+let g:indent_guides_enable_on_vim_startup=1
+" 从第二层开始可视化显示缩进
+let g:indent_guides_start_level=2
+" 色块宽度
+let g:indent_guides_guide_size=1
+" 快捷键 i 开/关 缩进可视化
+nmap <silent> <leader>i <Plug>IndentGuidesToggle
 
 
 "---------------------------------------------------
@@ -176,45 +241,49 @@ map <leader><space> :FixWhitespace<cr>
 
 
 
+"---------------------------------------------------
+"   < othree/javascirtp(js库语法高亮) 插件配置 >
+"---------------------------------------------------
+let g:used_javasecript_libs = 'jquery,react,vue'
 
 
 "--------------------------------------
 "   < scrooloose/syntastic(语法检查) 插件配置 >
 "--------------------------------------
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 "错误，侧边栏显示
-let g:syntastic_error_symbol = '>>'
-let g:syntastic_style_error_symbol='»'
+"let g:syntastic_error_symbol = '>>'
+"let g:syntastic_style_error_symbol='»'
 "警告，侧边栏显示
-let g:syntastic_warning_symbol = '>'
-let g:syntastic_style_warning_symbol='•'
+"let g:syntastic_warning_symbol = '>'
+"let g:syntastic_style_warning_symbol='•'
 
-let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_always_populate_loc_list = 1
 "错误窗口打开模式
-let g:syntastic_auto_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
 "打开文件时,进行语法检查 默认不检查 0:不检查 1：检查
 "let g:syntastic_check_on_open = 1
 " 当执行（:wq）、（:x）（:ZZ）时跳过语法检查，（:w）检查
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_check_on_wq = 0
 "是否高亮显示语法错误 默认显示， 1：显示 0：不显示
-let g:syntastic_enable_highlighting = 0
+"let g:syntastic_enable_highlighting = 0
 
-highlight SyntasticErrorSign guifg=white guibg=red
+"highlight SyntasticErrorSign guifg=white guibg=red
 
 "HTML语法检查sudo npm install -g htmlhint
-let g:syntastic_html_checkers=['htmlhint']
+"let g:syntastic_html_checkers=['htmlhint']
 "let g:syntastic_html_exec=
 
 "CSS语法检查 sudo npm install -g PrettyCSS
-let g:syntastic_css_checkers=['prettycss']
+"let g:syntastic_css_checkers=['prettycss']
 
 "javascript语法检查 sudo npm install -g jslint
-let g:syntastic_javascirpt_checkers=['jslint']
+"let g:syntastic_javascirpt_checkers=['jslint']
 
 "php语法检查
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+"let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 
 
 """""""""""""""""""""""""""""""""""""""""""" Vundle 插件设置 结束 """"""""""""""""""""""""""""""""""""""""""""""""
