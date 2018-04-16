@@ -1,4 +1,4 @@
-
+﻿
 "source ~/.vim/Basic_config.vim
 "source ~/.vim/Vundle_config.vim
 
@@ -11,7 +11,7 @@
 
 " 判断系统
 if has('win32')
-    echo "win32"
+    echo "win32hehe"
 
 elseif has('unix') " unix
 
