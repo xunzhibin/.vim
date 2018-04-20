@@ -223,6 +223,10 @@ Plugin 'raimondi/delimitmate'
 
 
 
+"---------------------------------
+"   Vue 组件高亮
+"---------------------------------
+Plugin 'posva/vim-vue'
 
 
 
@@ -308,6 +312,14 @@ map <leader><space> :FixWhitespace<cr>
 "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+"   Vue 组件 高亮
+
+autocmd FileType vue syntax sync fromstart
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
+"let g:vue_disable_pre_processors=1
+
+"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
 
