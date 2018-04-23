@@ -67,6 +67,12 @@ set cursorcolumn
 
 ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 "	文件
+"从不备份(文件保存时，不产生~备份文件)
+set nobackup
+set noundofile
+
+"不产生交换文件(文件编辑时，不产生.swp交换文件)
+set noswapfile
 
 " 自动 重新 读入(当打开文件在外部被修改,自动更新该文件)
 set autoread
