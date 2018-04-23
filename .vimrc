@@ -235,6 +235,14 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'raimondi/delimitmate'
 
 
+"---------------------------------
+"   代码高亮(支持大多数语言)
+"---------------------------------
+Plugin 'sheerun/vim-polyglot'
+
+
+
+
 " 快速对齐	'junegunn/vim-easy-align'
 " 括号高亮	'kien/rainbow_parentheses.vim'
 " 快速注释	'scrooloose/nerdcommenter'
