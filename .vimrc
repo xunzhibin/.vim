@@ -80,20 +80,34 @@ set autoread
 " tab键 转为 空格
 set expandtab
 
-" 一个 tab键 占 4个 空格
-set tabstop=4
+" 一个 tab键 占 2个 空格
+set tabstop=2
 
-" 编辑模式, 退格键 的 退回 为 4个 空格
-set softtabstop=4
+" 编辑模式, 退格键 的 退回 为 2个 空格
+set softtabstop=2
 
-" tab键 自动缩进, 宽度 为 4个 空格
-set shiftwidth=4
+" tab键 自动缩进, 宽度 为 2个 空格
+set shiftwidth=2
 
 " 使用 < 和 > 进行缩进, 根据 shiftwidth 调整宽度
 set shiftround
 
 "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+
+
+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+"	backspace键
+
+" 关闭vi兼容模式	
+set nocompatible
+
+"配置backspace 使退格键（backspace）使用此顺序; 正常处理indent, eol, start等
+set backspace=eol,start,indent
+
+"允许backspace和光标键跨越行边界(不建议)
+set whichwrap+=<,>,h,l
+"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
 
