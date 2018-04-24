@@ -81,13 +81,13 @@ set autoread
 set expandtab
 
 " 一个 tab键 占 4个 空格
-set tabstop=4
+set tabstop=2
 
 " 编辑模式, 退格键 的 退回 为 4个 空格
-set softtabstop=4
+set softtabstop=2
 
 " tab键 自动缩进, 宽度 为 4个 空格
-set shiftwidth=4
+set shiftwidth=2
 
 " 使用 < 和 > 进行缩进, 根据 shiftwidth 调整宽度
 set shiftround
@@ -408,13 +408,13 @@ set autoread
 set expandtab
 
 " 一个 tab键 占 4个 空格
-set tabstop=4
+set tabstop=2
 
 " 编辑模式, 退格键 的 退回 为 4个 空格
-set softtabstop=4
+set softtabstop=2
 
 " tab键 自动缩进, 宽度 为 4个 空格
-set shiftwidth=4
+set shiftwidth=2
 
 " 使用 < 和 > 进行缩进, 根据 shiftwidth 调整宽度
 set shiftround
@@ -653,6 +653,22 @@ nmap <Leader>w :w<CR>
 
 " 退出
 nmap <Leader>q :q<CR>
+
+" 复制到系统剪切板
+nmap <leader>y "+y
+
+" 系统剪切板内容粘贴到vim
+nmap <leader>p "+p
+
+" 新建一个tab标签页
+nmap <leader>,tn :tabnew
+
+" 下一个tab标签页
+nmap <leader>,tn :tabn
+
+" 上一个tab标签页
+nmap <leader>,tp :tabp
+
 
 "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
