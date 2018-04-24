@@ -67,6 +67,12 @@ set cursorcolumn
 
 ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 "	文件
+"从不备份(文件保存时，不产生~备份文件)
+set nobackup
+set noundofile
+
+"不产生交换文件(文件编辑时，不产生.swp交换文件)
+set noswapfile
 
 " 自动 重新 读入(当打开文件在外部被修改,自动更新该文件)
 set autoread
@@ -80,13 +86,13 @@ set autoread
 " tab键 转为 空格
 set expandtab
 
-" 一个 tab键 占 4个 空格
+" 一个 tab键 占 2个 空格
 set tabstop=2
 
-" 编辑模式, 退格键 的 退回 为 4个 空格
+" 编辑模式, 退格键 的 退回 为 2个 空格
 set softtabstop=2
 
-" tab键 自动缩进, 宽度 为 4个 空格
+" tab键 自动缩进, 宽度 为 2个 空格
 set shiftwidth=2
 
 " 使用 < 和 > 进行缩进, 根据 shiftwidth 调整宽度
@@ -94,6 +100,20 @@ set shiftround
 
 "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+
+
+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+"	backspace键
+
+" 关闭vi兼容模式
+set nocompatible
+
+"配置backspace 使退格键（backspace）使用此顺序; 正常处理indent, eol, start等
+set backspace=eol,start,indent
+
+"允许backspace和光标键跨越行边界(不建议)
+set whichwrap+=<,>,h,l
+"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
 
@@ -213,6 +233,14 @@ Plugin 'terryma/vim-multiple-cursors'
 "   自动 补全(单引号、双引号、括号等)
 "---------------------------------
 Plugin 'raimondi/delimitmate'
+
+
+"---------------------------------
+"   代码高亮(支持大多数语言)
+"---------------------------------
+Plugin 'sheerun/vim-polyglot'
+
+
 
 
 " 快速对齐	'junegunn/vim-easy-align'
