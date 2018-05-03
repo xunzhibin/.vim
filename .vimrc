@@ -421,6 +421,12 @@ set cursorcolumn
 
 ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 "	文件
+"从不备份(文件保存时，不产生~备份文件)
+set nobackup
+set noundofile
+
+"不产生交换文件(文件编辑时，不产生.swp交换文件)
+set noswapfile
 
 " 自动 重新 读入(当打开文件在外部被修改,自动更新该文件)
 set autoread
@@ -436,13 +442,13 @@ set autoread
 set expandtab
 
 " 一个 tab键 占 4个 空格
-set tabstop=2
+set tabstop=4
 
 " 编辑模式, 退格键 的 退回 为 4个 空格
-set softtabstop=2
+set softtabstop=4
 
 " tab键 自动缩进, 宽度 为 4个 空格
-set shiftwidth=2
+set shiftwidth=4
 
 " 使用 < 和 > 进行缩进, 根据 shiftwidth 调整宽度
 set shiftround
@@ -676,12 +682,6 @@ autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
 ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 "	自定义　快捷键
 
-" 保存
-nmap <Leader>w :w<CR>
-
-" 退出
-nmap <Leader>q :q<CR>
-
 " 复制到系统剪切板
 nmap <leader>y "+y
 
@@ -689,13 +689,19 @@ nmap <leader>y "+y
 nmap <leader>p "+p
 
 " 新建一个tab标签页
-nmap <leader>,tn :tabnew
+nmap <leader>tc :tabnew
 
 " 下一个tab标签页
-nmap <leader>,tn :tabn
+nmap <leader>tn :tabn<CR>
 
 " 上一个tab标签页
-nmap <leader>,tp :tabp
+nmap <leader>tp :tabp<CR>
+
+" 执行外部shell命令
+nmap <leader>s :!
+
+" sudo 保存
+nmap <leader>w :w ! sudo tee %
 
 
 "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
