@@ -555,7 +555,6 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
 
-
 "---------------------------------
 "   可视化 缩进
 "---------------------------------
@@ -655,7 +654,6 @@ set background=light    " 亮色
 
 " 背景 颜色 切换(暗色 和 亮色 切换)
 call togglebg#map("<F1>")
-
 
 "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
