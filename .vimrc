@@ -243,12 +243,10 @@ Plugin 'sheerun/vim-polyglot'
 
 
 
-" 快速对齐	'junegunn/vim-easy-align'
-" 括号高亮	'kien/rainbow_parentheses.vim'
-" 快速注释	'scrooloose/nerdcommenter'
+
 " 文件检索	'tacahiroy/ctrlp-funky'
-" 区域选中	'terryma/vim-expand-region'
-" 成对符号编辑	'tpope/vim-surround'
+
+
 " 重复一个插件的操作	'tpope/vim-repeat'
 
 " HTML
@@ -311,6 +309,9 @@ let g:indent_guides_start_level = 2
 
 " 色块 宽度 尺寸
 let g:indent_guides_guide_size = 1
+
+" 快捷键 ,i 开/关 缩进可视化
+nmap <silent> <leader>i <Plug>IndentGuidesToggle
 
 " 自定义 颜色
 let g:indent_guides_auto_colors = 0
@@ -548,7 +549,7 @@ Plugin 'altercation/vim-colors-solarized'
 
 
 "---------------------------------
-"   美化 状态栏 和 主题
+"	状态栏 美化
 "---------------------------------
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -579,6 +580,42 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'raimondi/delimitmate'
 
 
+"--------------------------------------
+"   快速 加环绕符号(单引号/双引号/括号/成对标签等)
+"--------------------------------------
+Plugin 'tpope/vim-surround'
+
+
+"--------------------------------------
+"   代码注释
+"--------------------------------------
+Plugin 'scrooloose/nerdcommenter'
+
+
+"--------------------------------------
+"   括号高亮
+"--------------------------------------
+Plugin 'kien/rainbow_parentheses.vim'
+
+
+"--------------------------------------
+"   文本对齐/过滤
+"--------------------------------------
+Plugin 'godlygeek/tabular'
+
+
+"--------------------------------------
+"   区域选中
+"--------------------------------------
+Plugin 'terryma/vim-expand-region'
+
+
+"--------------------------------------
+"   PHP语法高亮
+"--------------------------------------
+Plugin 'StanAngeloff/php.vim'
+
+
 "---------------------------------
 "   html5语法高亮
 "---------------------------------
@@ -597,7 +634,6 @@ Plugin 'docunext/closetag.vim'
 Plugin 'posva/vim-vue'
 
 
-
 " 加载 插件 结束
 call vundle#end()
 
@@ -608,7 +644,7 @@ filetype on
 
 
 ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-"   配色 方案
+"   theme 主题
 
 " 配色 主题
 colorscheme solarized
@@ -624,8 +660,9 @@ call togglebg#map("<F1>")
 "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
+
 ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-"   状态栏 主题 风格
+"   状态栏 美化
 
 let g:airline#extensons#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -676,20 +713,165 @@ map <leader><space> :FixWhitespace<cr>
 " c 替换内容
 " 例子: 检索 hello　选中 替换 world  --->  f hello <C-n> c wrold
 
+"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+"   自动 补全(单引号、双引号、括号等)
 
 "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
+
 ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-"   Vue 组件 高亮
+"   快速 加环绕符号(单引号/双引号/括号/成对标签等)
+
+" csw"		添加双引号
+" yss'		整行添加单引号
+" cs"'		双引号替换为单引号
+" cs(]		括号替换为中括号
+" sct'		标签替换为单引号
+" ds'		删除单引号
+
+"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+"   代码注释
+
+" shift+v 选择要注释的行
+" ,cc  注释单行或者选中行
+" ,cm  多行注释
+" ,cu  解开注释
+" ,ci  注释、取消注释切换
+
+" 在注释符默认添加空格
+let g:NERDSpaceDelims = 1
+
+" 将行注释符左对齐而不是下面的代码缩进
+let g:NERDDefaultAlign = 'left'
+
+" 使用紧凑语法美化多行注释
+"let g:NERDCompactSexyComs = 1
+
+" 设置语言默认使用备用定界符
+"let g:NERDAltDelims_java = 1
+
+" 添加自定义格式或覆盖默认值
+"let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/'} }
+
+" 允许注释和转换空行 (注释区域时有用)
+"let g:NERDCommentEmptyLines = 1
+
+" 启用时修整尾随空格注释
+"let g:NERDTrimTrailingWhitespace = 1
+
+"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+"   括号高亮
+
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+let g:rbpt_max = 16
+
+let g:rbpt_loadcmd_toggle = 0
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+"   文本对齐/过滤
+
+" ,a= 等号对齐
+" ,a: 冒号对齐
+" ,a" 双引号对齐
+" ,a' 单引号对齐
+
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+
+nmap <Leader>a: :Tabularize /:<CR>
+vmap <Leader>a: :Tabularize /:<CR>
+
+nmap <Leader>a" :Tabularize /"<CR>
+vmap <Leader>a" :Tabularize /"<CR>
+
+nmap <Leader>a' :Tabularize /'<CR>
+vmap <Leader>a' :Tabularize /'<CR>
+
+"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+"   区域选中
+
+vmap v <Plug>(expand_region_expand)
+vmap V <Plug>(expand_region_shrink)
+
+"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+"   PHP语法高亮
+
+let g:php_syntax_extensions_enabled = ["bcmath", "bz2", "core", "curl", "date", "dom", "ereg", "gd", "gettext", "hash", "iconv", "json", "libxml", "mbstring", "mcrypt", "mhash", "mysql", "mysqli", "openssl", "pcre", "pdo", "pgsql", "phar", "reflection", "session", "simplexml", "soap", "sockets", "spl", "sqlite3", "standard", "tokenizer", "wddx", "xml", "xmlreader", "xmlwriter", "zip", "zlib"]
+
+let php_var_selector_is_identifier = 1
+"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+"   html5语法高亮
+
+"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+"   自动补全HTML/XML标签
+
+"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+"   Vue 组件高亮
 
 autocmd FileType vue syntax sync fromstart
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
 "let g:vue_disable_pre_processors=1
 
 "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-
 
 
 
@@ -716,7 +898,6 @@ nmap <leader>s :!
 
 " sudo 保存
 nmap <leader>w :w ! sudo tee %
-
 
 "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
