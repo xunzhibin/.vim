@@ -279,4 +279,70 @@ endfunc
 
 "映射F2快捷键，生成后跳转至第10行，然后使用o进入vim的插入模式
 "map <F2> :call SetComment()<CR>:12<CR>o
-map <F2> :call SetComment()<CR>:12<CR>
+"map <F2> :call SetComment()<CR>:12<CR>
+
+
+" 文件注释
+func SetFileAnnotation()
+
+	if getline(1) != '<?php'
+		call append(line('^'), "<?php")
+		call append(line('^')+1, "/**")
+	else
+		call append(line('^')+1, "/**")
+	endif
+
+	call append(line('^')+2, " * 简述区")
+	call append(line('^')+3, " *")
+	call append(line('^')+4, " * 详细说明区")
+	call append(line('^')+5, " *")
+	call append(line('^')+6, " * @author    Alex Xun xunzhibin@expert.com")
+	call append(line('^')+7, " * @version   1.0")
+	call append(line('^')+8, " * @copyright (C) " . strftime("%Y") . " Jnexpert Ltd. All rights reserved")
+	call append(line('^')+9, " * @file      " . expand('%'))
+	call append(line('^')+10, " */")
+	call append(line('^')+11, "")
+endfunc
+
+"映射F2快捷键，生成后跳转至第12行，普通模式
+map <F2> :call SetFileAnnotation()<CR>:12<CR>
+
+" 类注释
+func SetClassesAnnotation()
+    call append(line("."), "/**")
+    call append(line(".")+1, " * 功能简述区(短描述)")
+    call append(line(".")+2, " *")
+    call append(line(".")+3, " * 详细说明区(长描述)")
+    call append(line(".")+4, " * @author Alex Xun xunzhibin@jnexpert.com>")
+    call append(line(".")+5, " * @package ")
+    call append(line(".")+6, " */")
+endfunc
+
+"映射F3快捷键
+map <F3> :call SetClassesAnnotation()<CR>
+
+" 方法注释
+func SetFuntionAnnotation()
+	let s:indent = ""
+	let s:num = indent(".")
+	while s:num>0
+		let s:indent .= ' '
+		let s:num -= 1
+	endwhile
+	call append(line("."), s:indent)
+
+	call append(line("."), s:indent . "/**")
+	call append(line(".")+1, s:indent . " * 功能简述区(短描述)")
+	call append(line(".")+2, s:indent . " *")
+	call append(line(".")+3, s:indent . " * 详细说明区(长描述)")
+	call append(line(".")+4, s:indent . " *")
+	call append(line(".")+5, s:indent . " * @param ")
+	call append(line(".")+6, s:indent . " *")
+	call append(line(".")+7, s:indent . " * @throws ")
+	call append(line(".")+8, s:indent . " *")
+	call append(line(".")+9, s:indent . " * @return ")
+    call append(line(".")+10, s:indent . " */")
+endfunc
+
+"映射F4快捷键
+map <F4> :call SetFuntionAnnotation()<CR>

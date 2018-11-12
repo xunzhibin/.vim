@@ -50,7 +50,7 @@ Plugin 'vim-airline/vim-airline-themes'
 "--------------------------------------
 "   代码高亮(支持大多数语言)
 "--------------------------------------
-Plugin 'sheerun/vim-polyglot'
+"Plugin 'sheerun/vim-polyglot'
 
 
 "--------------------------------------
@@ -161,6 +161,20 @@ Plugin 'hail2u/vim-css3-syntax'
 "   语法高亮(多种知名js库)
 "--------------------------------------
 Plugin 'othree/javascript-libraries-syntax.vim'
+
+let s:default_libs = [
+  \ 'jquery',
+  \ 'vue'
+  \ ]
+
+
+"--------------------------------------
+"   语法高亮(多种知名js库)
+"--------------------------------------
+Plugin 'posva/vim-vue'
+
+autocmd FileType vue syntax sync fromstart
+let g:vue_disable_pre_processors=1
 
 
 call vundle#end()
