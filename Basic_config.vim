@@ -257,8 +257,6 @@ set foldlevel=99
 
 
 
-" 当新建文件时自动加入头注释
-autocmd BufNewFile *.php exec ":call SetComment()"
 
 " 加入注释
 func SetComment()
@@ -307,15 +305,19 @@ endfunc
 "映射F2快捷键，生成后跳转至第12行，普通模式
 map <F2> :call SetFileAnnotation()<CR>:12<CR>
 
+" 当新建文件时自动加入头注释
+autocmd BufNewFile *.php exec ":call SetFileAnnotation()"
+
 " 类注释
 func SetClassesAnnotation()
     call append(line("."), "/**")
     call append(line(".")+1, " * 功能简述区(短描述)")
     call append(line(".")+2, " *")
     call append(line(".")+3, " * 详细说明区(长描述)")
-    call append(line(".")+4, " * @author Alex Xun xunzhibin@jnexpert.com>")
-    call append(line(".")+5, " * @package ")
-    call append(line(".")+6, " */")
+	call append(line(".")+4, " *")
+    call append(line(".")+5, " * @author Alex Xun xunzhibin@jnexpert.com")
+    call append(line(".")+6, " * @package ")
+    call append(line(".")+7, " */")
 endfunc
 
 "映射F3快捷键
@@ -329,19 +331,22 @@ func SetFuntionAnnotation()
 		let s:indent .= ' '
 		let s:num -= 1
 	endwhile
-	call append(line("."), s:indent)
+	call append(line("."), "")
 
-	call append(line("."), s:indent . "/**")
-	call append(line(".")+1, s:indent . " * 功能简述区(短描述)")
-	call append(line(".")+2, s:indent . " *")
-	call append(line(".")+3, s:indent . " * 详细说明区(长描述)")
-	call append(line(".")+4, s:indent . " *")
-	call append(line(".")+5, s:indent . " * @param ")
-	call append(line(".")+6, s:indent . " *")
-	call append(line(".")+7, s:indent . " * @throws ")
+	call append(line(".")+1, s:indent . "/**")
+	call append(line(".")+2, s:indent . " * 功能简述区(短描述)")
+	call append(line(".")+3, s:indent . " *")
+	call append(line(".")+4, s:indent . " * 详细说明区(长描述)")
+	call append(line(".")+5, s:indent . " *")
+	call append(line(".")+6, s:indent . " * @author Alex Xun xunzhibin@jnexpert.com")
+	call append(line(".")+7, s:indent . " * @since ")
 	call append(line(".")+8, s:indent . " *")
-	call append(line(".")+9, s:indent . " * @return ")
-    call append(line(".")+10, s:indent . " */")
+	call append(line(".")+9, s:indent . " * @param ")
+	call append(line(".")+10, s:indent . " *")
+	call append(line(".")+11, s:indent . " * @throws ")
+	call append(line(".")+12, s:indent . " *")
+	call append(line(".")+13, s:indent . " * @return ")
+    call append(line(".")+14, s:indent . " */")
 endfunc
 
 "映射F4快捷键
